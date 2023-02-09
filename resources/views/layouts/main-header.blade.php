@@ -27,15 +27,21 @@
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
 
-                {{-- <ul>
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul> --}}
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{ trans('main_trans.Change language') }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
+
 
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
@@ -99,20 +105,24 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
-                                    <span>michael-bean@mail.com</span>
+                                    <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5>
+                                    <span>{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
                         <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                        <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="text-warning ti-user"></i>Profile</a>
                         <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        this.closest('form').submit();"><i class="text-danger ti-unlock"></i>Logout</a>
+                        </form>
                     </div>
                 </li>
             </ul>
