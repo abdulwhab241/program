@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GradeRequest;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
@@ -13,7 +15,8 @@ class GradeController extends Controller
      */
     public function index()
     {
-        return view('pages.Grades.index');
+        $grades = Grade::all();
+        return view('pages.Grades.index', compact('grades'));
     }
 
     /**
@@ -32,9 +35,13 @@ class GradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GradeRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $Grade = new Grade();
+        $Grade->Nmae = ['en' => $request->Name_en, 'ar' => $request->Name];
+        $Grade->Notes = $request->Note;
+        $Grade->save();
     }
 
     /**
