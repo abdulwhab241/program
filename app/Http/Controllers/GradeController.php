@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GradeRequest;
+use toastr;
 use App\Models\Grade;
 use Illuminate\Http\Request;
+use App\Http\Requests\GradeRequest;
 
 class GradeController extends Controller
 {
@@ -37,11 +38,22 @@ class GradeController extends Controller
      */
     public function store(GradeRequest $request)
     {
-        $validated = $request->validated();
-        $Grade = new Grade();
-        $Grade->Nmae = ['en' => $request->Name_en, 'ar' => $request->Name];
-        $Grade->Notes = $request->Note;
-        $Grade->save();
+        try
+        {
+            $validated = $request->validated();
+            $Grade = new Grade();
+            // $Grade->Nmae = ['en' => $request->Name_en, 'ar' => $request->Name];
+            $Grade->Name = $request->Name;
+            $Grade->Notes = $request->Notes;
+            $Grade->save();
+            toastr()->success(trans('main_trans.success'));
+            return redirect()->route('Grades.index');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
     }
 
     /**
@@ -73,9 +85,24 @@ class GradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GradeRequest $request)
     {
-        //
+        try
+        {
+            $validated = $request->validated();
+            $Grade = Grade::findOrFail($request->id);
+            // $Grade->Nmae = ['en' => $request->Name_en, 'ar' => $request->Name];
+            $Grade->update([
+                $Grade->Name = $request->Name,
+                $Grade->Notes = $request->Notes,
+            ]);
+            toastr()->success(trans('main_trans.update'));
+            return redirect()->route('Grades.index');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -84,8 +111,10 @@ class GradeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $Grade = Grade::findOrFail($request->id)->delete(); 
+        toastr()->success(trans('main_trans.delete'));
+        return redirect()->route('Grades.index');
     }
 }

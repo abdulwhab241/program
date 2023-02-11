@@ -8,6 +8,7 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>{{ trans('main_trans.title') }}</title>
     @include('layouts.head')
 </head>
 
@@ -19,7 +20,7 @@
  preloader -->
 
         <div id="pre-loader">
-            <img src="assets/images/pre-loader/loader-01.svg" alt="">
+            <img src="/assets/images/pre-loader/loader-01.svg" alt="">
         </div>
 
         <!--=================================

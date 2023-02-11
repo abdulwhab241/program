@@ -2,6 +2,10 @@
 
 return [
 
+    // Dashboard title
+    'title' => 'برنامج عبدالوهاب لإدارة المدارس',
+    // <!-- Start Grade trans -->
+    'sid' => 'الرئيسية',
     'Dashboard' => 'لوحة التحكم',
     'Change language' => 'اللغة',
     'Grades' => 'المراحل الدراسية',
@@ -20,5 +24,11 @@ return [
     'Edit' => 'تعديل',
     'Delete' => 'حذف',
     'Close' => 'إغلاق',
+    // <!-- End Grad trans -->
+    
+    // <!-- message -->
+    'success' => 'تم حفظ البيانات بنجاح',
+    'update' => 'تم تحديث البيانات بنجاح',
+    'delete' => 'تم حذف البيانات بنجاح',
 
 ];

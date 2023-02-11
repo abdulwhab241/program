@@ -1,7 +1,10 @@
 <?php
 
 return [
-
+    // Dashboard title
+    'title' => 'Abdulwhab school management program',
+    // <!-- Start Grade trans -->
+    'sid' => 'Home',
     'Dashboard' => 'Dashboard',
     'Change language' => 'Language',
     'Grades' => 'Grades',
@@ -20,4 +23,12 @@ return [
     'Edit' => 'Edit',
     'Delete' => 'Delete',
     'Close' => 'Close',
+     // <!-- End Grad trans -->
+    
+    // <!-- Start message -->
+    'success' => 'Data has been saved successfully!',
+    'update' => 'Data has been updated successfully!',
+    'delete' => 'Data has been deleted successfully!',
+    // <!-- End message -->
+
 ];

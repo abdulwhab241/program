@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-			$table->longText('Notes');
+            $table->string('Name')->unique();
+			$table->longText('Notes')->nullable();
             $table->timestamps();
         });
     }
