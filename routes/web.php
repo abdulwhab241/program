@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::group(
         Route::get('/', [HomeController::class, 'index']) -> name('dashboard');
 
         Route::resource('Grades', GradeController::class);
+        Route::resource('Classrooms', ClassroomController::class);
 
     });
 
