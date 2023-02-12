@@ -3,8 +3,8 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo-dark.png" alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
+                <a class="navbar-brand brand-logo" href="index.html"><img src="/assets/images/logo-dark.png" alt=""></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="/assets/images/logo-icon-dark.png"
                         alt=""></a>
             </div>
             <!-- Top bar left -->
@@ -28,7 +28,7 @@
             <ul class="nav navbar-nav ml-auto">
 
                 <div class="dropdown">
-                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-info dropdown-toggle" style="padding: 10px; margin:5px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         {{ trans('main_trans.Change language') }}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
@@ -99,7 +99,7 @@
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="/assets/images/profile-avatar.jpg" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">

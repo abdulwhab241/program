@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class ClassroomController extends Controller
    */
   public function index()
   {
-    $Classrooms = Classroom::all();
-    return view('pages.Classrooms.index', compact('Classrooms'));
+    $My_Classes = Classroom::all();
+    $Grades = Grade::all();
+    return view('pages.Classrooms.index',compact('My_Classes','Grades'));
   }
 
   /**

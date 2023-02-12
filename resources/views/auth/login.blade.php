@@ -7,14 +7,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('الإيميل')" />
+            <x-input-label for="email" :value="__('الإيميل')" dir="rtl" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('كلمة السر')" />
+            <x-input-label for="password" :value="__('كلمة السر')" dir="rtl" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -42,11 +42,11 @@
             <x-primary-button class="ml-3">
                 {{ __('دخول') }}
             </x-primary-button>
-            <div>
+            {{-- <div>
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}" style="margin-right: 10px;" class="btn btn-outline-info ml-4 text-sm text-gray-700 dark:text-gray-500 underline">تسجيل</a>
                 @endif
-                </div>  
+                </div>   --}}
         </div>
     </form>
 </x-guest-layout>
