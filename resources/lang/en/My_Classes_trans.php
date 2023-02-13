@@ -4,13 +4,13 @@ return [
 
     'title_page' => 'Classes',
     'List_classes' => 'List Classes',
-    'add_class' => 'add class',
+    'add_class' => 'Add class',
     'edit_class'=> 'Edit Class',
     'delete_class'=> 'Delete Class',
-    'Warning_Grade' => 'Are you sure of the deletion process?',
+    'Warning_class' => 'Are you sure of the deletion process?',
     'submit' => 'submit',
-    'Name_class'=>'Name_class_ar',
-    'Name_class_en'=>'Name class en',
+    'Name_class'=>'Name class',
+    'Name_class_en'=>'Name class ',
     'Name_Grade'=>'Name Grade',
     'add_row'=>'add row',
     'delete_row'=>'Delete row',
@@ -18,5 +18,8 @@ return [
     'Edit'=>'Edit',
     'Delete'=>'Delete',
     'Close' => 'Close',
+    'delete_Class_Error'=>'The Class cannot be Deleted because it contains Sections',
+    'delete_checkbox'=> 'Delete the selected classes',
+    'Search_By_Grade'=> 'Search for the name of the stage',
 
 ];

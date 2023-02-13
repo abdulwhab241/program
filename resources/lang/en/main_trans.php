@@ -24,6 +24,7 @@ return [
     'Delete' => 'Delete',
     'Close' => 'Close',
     'logout' => 'Logout',
+    'delete_Grade_Error'=>'The Grade cannot be deleted because there are classes attached to it',
      // <!-- End Grad trans -->
     
     // <!-- Start message -->
