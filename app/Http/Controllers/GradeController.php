@@ -114,7 +114,7 @@ class GradeController extends Controller
     public function destroy(Request $request)
     {
         $Grade = Grade::findOrFail($request->id)->delete(); 
-        toastr()->success(trans('main_trans.delete'));
+        toastr()->warning(trans('main_trans.delete'));
         return redirect()->route('Grades.index');
     }
 }

@@ -24,11 +24,28 @@ return [
     'Edit' => 'تعديل',
     'Delete' => 'حذف',
     'Close' => 'إغلاق',
+    'logout' => 'تسجيل خروج',
     // <!-- End Grad trans -->
     
     // <!-- message -->
     'success' => 'تم حفظ البيانات بنجاح',
     'update' => 'تم تحديث البيانات بنجاح',
     'delete' => 'تم حذف البيانات بنجاح',
+     // <!-- End message -->
+    
+    'classes'=>'الفصول',
+    'sections'=>'الاقسام',
+    'students'=>'الطلاب',
+    'Teachers'=>'المعلمين',
+    'Parents'=>'اولياء الامور',
+    'Accounts'=>'الحسابات',
+    'Attendance'=>'الحضور والغياب',
+    'Exams'=>'الامتحانات',
+    'library'=>'المكتبة',
+    'Onlineclasses'=>'حصص اونلاين',
+    'Settings'=>'الاعدادات',
+    'Users'=>'المستخدمين',
+    'Copyright' => 'جميع الحقوق محفوظة ',
+    'Name_Programer' => 'عبدالوهاب محمد'
 
 ];

@@ -23,6 +23,7 @@ return [
     'Edit' => 'Edit',
     'Delete' => 'Delete',
     'Close' => 'Close',
+    'logout' => 'Logout',
      // <!-- End Grad trans -->
     
     // <!-- Start message -->
@@ -30,5 +31,22 @@ return [
     'update' => 'Data has been updated successfully!',
     'delete' => 'Data has been deleted successfully!',
     // <!-- End message -->
+
+    'classes'=>'Classes',
+    'sections'=>'Sections',
+    'students'=>'Students',
+    'Teachers'=>'Teachers',
+    'Parents'=>'Parents',
+    'Accounts'=>'Accounts',
+    'Attendance'=>'Attendance',
+    'Exams'=>'Exams',
+    'library'=>'Library',
+    'Onlineclasses'=>'Online classes',
+    'Settings'=>'Settings',
+    'Users'=>'Users',
+
+
+    'Copyright' => 'Copyright',
+    'Name_Programer' => 'Abdullwhab Mohammed'
 
 ];
