@@ -6,6 +6,21 @@
 @stop
 @endsection
 @section('page-header')
+
+<!-- breadcrumb -->
+<div class="page-title">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="mb-0"> {{ trans('My_Classes_trans.title_page') }}</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('My_Classes_trans.title_page') }}</li>
+            </ol>
+        </div>
+    </div>
+</div>
 <!-- breadcrumb -->
 @section('PageTitle')
 {{ trans('My_Classes_trans.title_page') }}
@@ -30,11 +45,11 @@
                 </div>
             @endif
 
-            <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-outline-success x-small" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
                 {{ trans('My_Classes_trans.add_class') }}
             </button>
             
-            <button type="button" class="button x-small" id="btn_delete_all">
+            <button type="button" class="btn btn-outline-danger x-small" style="margin: 5px; padding: 5px;" id="btn_delete_all">
                 {{ trans('My_Classes_trans.delete_checkbox') }}
             </button>
             <br><br>

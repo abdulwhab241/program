@@ -5,6 +5,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SectionController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -34,8 +35,9 @@ Route::group(
         Route::resource('Grades', GradeController::class);
         Route::resource('Classrooms', ClassroomController::class);
         Route::post('delete_all', [ClassroomController::class,'delete_all'])->name('delete_all');
-
         Route::post('Filter_Classes', [ClassroomController::class,'Filter_Classes'])->name('Filter_Classes');
+        Route::resource('Sections', SectionController::class);
+        Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
 
     });
 
