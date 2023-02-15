@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
+use Livewire\Livewire;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -40,6 +41,11 @@ Route::group(
         Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
 
     });
+
+        //==============================parents============================
+
+        Route::view('add_parent','livewire.show_Form');
+        // Route::view('add_parent',[Livewire::class,'add_parent'])->name('show_Form');
 
 // Route::group(
 //     [
