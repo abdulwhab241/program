@@ -30,9 +30,9 @@
                         @enderror
                     </div>
                     <div class="col">
-                        <label for="title">{{trans('Parent_trans.Name_Father_en')}}</label>
-                        <input type="text" wire:model="Name_Father_en" class="form-control" >
-                        @error('Name_Father_en')
+                        <label for="title">{{trans('Parent_trans.Employer')}}</label>
+                        <input type="text" wire:model="Employer" class="form-control" >
+                        @error('Employer')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -47,48 +47,48 @@
                         @enderror
                     </div>
                     <div class="col-md-3">
-                        <label for="title">{{trans('Parent_trans.Job_Father_en')}}</label>
-                        <input type="text" wire:model="Job_Father_en" class="form-control">
-                        @error('Job_Father_en')
+                        <label for="title">{{trans('Parent_trans.Father_Phone')}}</label>
+                        <input type="text" wire:model="Father_Phone" class="form-control">
+                        @error('Father_Phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="col">
-                        <label for="title">{{trans('Parent_trans.National_ID_Father')}}</label>
-                        <input type="text" wire:model="National_ID_Father" class="form-control">
-                        @error('National_ID_Father')
+                        <label for="title">{{trans('Parent_trans.Jop_Phone')}}</label>
+                        <input type="text" wire:model="Jop_Phone" class="form-control">
+                        @error('Jop_Phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
-                        <label for="title">{{trans('Parent_trans.Passport_ID_Father')}}</label>
-                        <input type="text" wire:model="Passport_ID_Father" class="form-control">
-                        @error('Passport_ID_Father')
+                        <label for="title">{{trans('Parent_trans.Home_Phone')}}</label>
+                        <input type="text" wire:model="Home_Phone" class="form-control">
+                        @error('Home_Phone')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="col">
+                    {{-- <div class="col">
                         <label for="title">{{trans('Parent_trans.Phone_Father')}}</label>
                         <input type="text" wire:model="Phone_Father" class="form-control">
                         @error('Phone_Father')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
-                    </div>
+                    </div> --}}
 
                 </div>
 
 
-                <div class="form-row">
+                {{-- <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">{{trans('Parent_trans.Nationality_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Nationality_Father_id">
                             <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                            {{-- @foreach($Nationalities as $National)
+                            @foreach($Nationalities as $National)
                                 <option value="{{$National->id}}">{{$National->Name}}</option>
                             @endforeach
-                        </select> --}}
+                        </select>
                         @error('Nationality_Father_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -97,9 +97,9 @@
                         <label for="inputState">{{trans('Parent_trans.Blood_Type_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Blood_Type_Father_id">
                             <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                            {{-- @foreach($Type_Bloods as $Type_Blood)
+                            @foreach($Type_Bloods as $Type_Blood)
                                 <option value="{{$Type_Blood->id}}">{{$Type_Blood->Name}}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                         @error('Blood_Type_Father_id')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -109,15 +109,15 @@
                         <label for="inputZip">{{trans('Parent_trans.Religion_Father_id')}}</label>
                         <select class="custom-select my-1 mr-sm-2" wire:model="Religion_Father_id">
                             <option selected>{{trans('Parent_trans.Choose')}}...</option>
-                            {{-- @foreach($Religions as $Religion)
+                            @foreach($Religions as $Religion)
                                 <option value="{{$Religion->id}}">{{$Religion->Name}}</option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                         @error('Religion_Father_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div class="form-group">
@@ -128,7 +128,7 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit"
+                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" style="padding: 10px; margin: 5px;" wire:click="firstStepSubmit"
                         type="button">{{trans('Parent_trans.Next')}}
                 </button>
 

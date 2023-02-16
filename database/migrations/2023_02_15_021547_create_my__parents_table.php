@@ -29,7 +29,7 @@ return new class extends Migration
 
             //Mother information
             $table->string('Name_Mother');
-            $table->string('Phone_Mother');
+            $table->string('Phone_Mother')->nullable();
             $table->string('Job_Mother');
             $table->timestamps();
         });
