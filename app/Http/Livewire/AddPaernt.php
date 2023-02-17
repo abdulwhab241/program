@@ -23,7 +23,7 @@ class AddPaernt extends Component
 
     // Mother_INPUTS
     $Name_Mother, $Phone_Mother,
-    $Job_Mother;
+    $Job_Mother, $show_table = true, $updateMode = false, $Parent_id;
 
     public function updated($propertyName)
     {
@@ -38,8 +38,13 @@ class AddPaernt extends Component
 
 public function render()
 {
-    return view('livewire.add-paernt');
+    return view('livewire.add-paernt', [
+        'my_parents' => My_Parent::all(),
+    ]);
+}
 
+public function showformadd(){
+    $this->show_table = false;
 }
 
 //firstStepSubmit
@@ -104,6 +109,71 @@ public function submitForm(){
 
 }
 
+public function edit($id)
+{
+    $this->show_table =false;
+    $this->updateMode = true;
+    $My_Parent = My_Parent::where('id',$id)->first();
+    $this->Parent_id = $id;
+    $this->Email = $My_Parent->Email;
+    $this->Password = $My_Parent->Password;
+    $this->Name_Father = $My_Parent->Name_Father;
+    $this->Employer = $My_Parent->Employer;
+    $this->Jop_Phone = $My_Parent->Jop_Phone;
+    $this->Father_Phone = $My_Parent->Father_Phone;
+    $this->Job_Father = $My_Parent->Job_Father;
+    $this->Home_Phone = $My_Parent->Home_Phone;
+    $this->Address_Father = $My_Parent->Address_Father;
+    $this->Name_Mother = $My_Parent->Name_Mother;
+    $this->Phone_Mother = $My_Parent->Phone_Mother;
+    $this->Job_Mother = $My_Parent->Job_Mother;
+
+
+}
+
+public function firstStepSubmit_edit()
+{
+    $this->updateMode = true;
+    $this->currentStep = 2;
+}
+
+public function secondStepSubmit_edit()
+{
+    $this->updateMode = true;
+    $this->currentStep = 3;
+}
+
+public function submitForm_edit()
+{
+    if($this->Parent_id)
+    {
+        $parent = My_Parent::findOrFail($this->Parent_id);
+        $parent->update([
+            'Email' => $this->Email,
+            'Password' => Hash::make($this->Password),
+            'Name_Father' => $this->Name_Father,
+            'Employer' => $this->Employer,
+            'Jop_Phone' => $this->Jop_Phone,
+            'Father_Phone' => $this->Father_Phone,
+            'Job_Father' => $this->Job_Father,
+            'Home_Phone' => $this->Home_Phone,
+            'Address_Father' => $this->Address_Father,
+            'Name_Mother' => $this->Name_Mother,
+            'Phone_Mother' => $this->Phone_Mother,
+            'Job_Mother' => $this->Job_Mother,
+        ]);
+
+        // $this->successMessage = trans('main_trans.update');
+        toastr()->success(trans('main_trans.update'));
+        return redirect()->to('/add_parent');
+    }
+}
+
+public function delete($id){
+    My_Parent::findOrFail($id)->delete();
+    toastr()->error(trans('main_trans.delete'));
+    return redirect()->to('/add_parent');
+}
 
  //clearForm
 public function clearForm()

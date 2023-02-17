@@ -15,6 +15,12 @@
 @endif
 
 
+
+
+    @if($show_table)
+    @include('livewire.Parent_Table')
+
+    @else
     <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
@@ -49,13 +55,26 @@
                 <div class="col-xs-12">
                     <div class="col-md-12">
                         <h3 style="font-family: 'Cairo', sans-serif;">هل انت متاكد من حفظ البيانات ؟</h3><br>
+                        
+                        <input type="hidden" wire:model="Parent_id">
+
                         <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right"
                                 style="padding: 10px; margin: 5px;" type="button"
                                 wire:click="back(2)">{{ trans('Parent_trans.Back') }}</button>
+                        
+                        {{-- for edit --}}
+                        @if($updateMode)
                         <button class="btn btn-success btn-sm btn-lg pull-right" 
-                                style="padding: 10px; margin: 5px;" wire:click="submitForm"
+                                style="padding: 10px; margin: 5px;" wire:click="submitForm_edit"
                                 type="button">{{ trans('Parent_trans.Finish') }}</button>
+                        @else
+                        <button class="btn btn-success btn-sm btn-lg pull-right" 
+                        style="padding: 10px; margin: 5px;" wire:click="submitForm"
+                        type="button">{{ trans('Parent_trans.Finish') }}</button>
+                        @endif
+
                     </div>
                 </div>
             </div>
+            @endif
     </div>

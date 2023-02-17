@@ -2,7 +2,7 @@
 @section('css')
 {{-- @livewireStyles --}}
 @section('title')
-{{trans('main_trans.Add_Parent')}}
+{{trans('main_trans.List_Parents')}}
 @stop
 @endsection
 @section('page-header')
@@ -11,19 +11,19 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0"> {{ trans('main_trans.Add_Parent') }}</h4>
+            <h4 class="mb-0"> {{ trans('main_trans.Parents') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('main_trans.Add_Parent') }}</li>
+                <li class="breadcrumb-item active">{{ trans('main_trans.Parents') }}</li>
             </ol>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @section('PageTitle')
-{{trans('main_trans.Add_Parent')}}
+{{trans('main_trans.List_Parents')}}
 @stop
 <!-- breadcrumb -->
 @endsection

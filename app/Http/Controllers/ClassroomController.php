@@ -126,7 +126,7 @@ class ClassroomController extends Controller
       $delete_all_id = explode(",", $request->delete_all_id);
 
       Classroom::whereIn('id', $delete_all_id)->Delete();
-      toastr()->error(trans('messages.Delete'));
+      toastr()->error(trans('main_trans.delete'));
       return redirect()->route('Classrooms.index');
   }
 
