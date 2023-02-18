@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
-use App\Http\Controllers\GradeController;
-use App\Http\Controllers\HomeController;
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
-use Livewire\Livewire;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -39,6 +40,7 @@ Route::group(
         Route::post('Filter_Classes', [ClassroomController::class,'Filter_Classes'])->name('Filter_Classes');
         Route::resource('Sections', SectionController::class);
         Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
+        Route::resource('Teachers', TeacherController::class);
 
     });
 
