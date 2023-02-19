@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
 @section('title')
     {{trans('main_trans.List_Teachers')}}
 @stop
@@ -82,8 +81,13 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p> {{ trans('My_Classes_trans.Warning_Grade') }}</p>
+                                                    <p> {{ trans('My_Classes_trans.Warning_class') }}</p>
                                                     <input type="hidden" name="id"  value="{{$Teacher->id}}">
+                                                    <input  type="text" style="font-weight: bolder; font-size:20px;"
+                                                    name="Name_Section"
+                                                    class="form-control"
+                                                    value="{{ $Teacher->Name }}"
+                                                    disabled>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="modal-footer">

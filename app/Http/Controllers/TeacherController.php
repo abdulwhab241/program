@@ -71,7 +71,7 @@ class TeacherController extends Controller
         $Teachers = $this->Teacher->editTeachers($id);
         $specializations = $this->Teacher->GetSpecializations();
         $genders = $this->Teacher->GetGender();
-        return view('pages.Teachers.create', compact('specializations','genders','Teachers'));
+        return view('pages.Teachers.edit', compact('specializations','genders','Teachers'));
     }
 
     /**
@@ -92,8 +92,8 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Teacher->deleteTeachers($request);
     }
 }

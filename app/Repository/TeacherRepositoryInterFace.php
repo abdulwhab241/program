@@ -23,6 +23,6 @@ interface TeacherRepositoryInterFace{
     //  // store Teachers
     public function storeTeachers($request);
 
-    //  // delete Teachers
-    // public function deleteTeachers($request);
+     // delete Teachers
+    public function deleteTeachers($request);
 }

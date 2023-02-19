@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sections', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('Name_Section');
             $table->integer('Status')->default(1);
             $table->bigInteger('Grade_id')->unsigned();

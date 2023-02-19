@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-@toaster_css
 
 @section('title')
 {{ trans('main_trans.Grades') }}
@@ -206,7 +205,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="Name"
-                                        class="mr-sm-2">{{ trans('main_trans.stage_name_ar') }}
+                                        class="mr-sm-2">{{ trans('main_trans.Name') }}
                                     :</label>
                                 <input id="Name" type="text" name="Name" class="form-control">
                             </div>

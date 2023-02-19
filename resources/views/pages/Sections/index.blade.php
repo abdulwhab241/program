@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
 @section('title')
     {{ trans('Sections_trans.title_page') }}
 @stop
@@ -75,6 +74,7 @@
     <th>{{ trans('Sections_trans.Name_Class') }}</th>
     <th>{{ trans('Sections_trans.Name_Section') }}</th>
     <th>{{ trans('Sections_trans.Status') }}</th>
+    {{-- <th>{{ trans('Sections_trans.Name_Teacher') }}</th> --}}
     <th>{{ trans('Sections_trans.Processes') }}</th>
 </tr>
 </thead>
@@ -83,9 +83,9 @@
 @foreach ($Grade->Sections as $list_Sections)
     <tr>
         <?php $i++; ?>
-        <td>{{ $i }}</td>
+        <td >{{ $i }}</td>
         <td>{{ $list_Sections->My_Classes->Name_Class }}</td>
-        <td>{{ $list_Sections->Name_Section }}</td>
+        <td style="font-weight: bold; font-size: 20px;">{{ $list_Sections->Name_Section }}</td>
         <td>
             @if ($list_Sections->Status === 1)
                 <label
@@ -96,6 +96,11 @@
             @endif
 
         </td>
+        {{-- <td>
+            @foreach ($TeacherWithSection->SectionsWith as $t)
+                {{ $t->teachers->Name }}
+            @endforeach
+        </td> --}}
         <td>
 
             <a href="#"
@@ -213,9 +218,23 @@
                                         id="exampleCheck1">
                                 @endif
                                 <label
-                                    class="form-check-label"
+                                    class="form-check-label" style="font-weight: bold;"
                                     for="exampleCheck1">{{ trans('Sections_trans.Status') }}</label>
                             </div>
+                        </div>
+                        <br>
+                        
+                        <div class="col">
+                            <label for="inputName" style="font-weight: bold;" class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
+                            <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
+                                @foreach($list_Sections->teachers as $teacher)
+                                    <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
+                                @endforeach
+
+                                @foreach($teachers as $teacher)
+                                    <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 
@@ -353,6 +372,17 @@
                             class="control-label">{{ trans('Sections_trans.Name_Class') }}</label>
                         <select name="Class_id" class="custom-select">
 
+                        </select>
+                    </div>
+                    <br>
+
+                    <div class="col">
+                        <label for="inputName" style="font-weight: bold;"
+                        class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
+                        <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect1">
+                            @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->id }}">{{ $teacher->Name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
