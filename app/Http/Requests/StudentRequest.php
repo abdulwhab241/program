@@ -24,9 +24,8 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
-            'email' => 'required|email|unique:students,email',
+            'name' => 'required',
+            'email' => 'required|email|unique:students,email,'.$this->id,
             'password' => 'required|string|min:6|max:10',
             'gender_id' => 'required',
             'Date_Birth' => 'required|date|date_format:Y-m-d',

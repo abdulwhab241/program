@@ -55,6 +55,7 @@ return [
     'List_Teachers'=>'قائمة المعلمين',
     'Add_Parent'=>'اضافة ولي امر',
     'add_student'=>'اضافة طالب جديد',
+    'list_students'=>'قائمة الطلاب',
     // 'Accounts'=>'الحسابات',
     // 'Attendance'=>'الحضور والغياب',
     // 'Exams'=>'الامتحانات',

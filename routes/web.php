@@ -35,28 +35,58 @@ Route::group(
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
         Route::get('/', [HomeController::class, 'index']) -> name('dashboard');
 
-        Route::resource('Grades', GradeController::class);
-        Route::resource('Classrooms', ClassroomController::class);
-        Route::post('delete_all', [ClassroomController::class,'delete_all'])->name('delete_all');
-        Route::post('Filter_Classes', [ClassroomController::class,'Filter_Classes'])->name('Filter_Classes');
-        Route::resource('Sections', SectionController::class);
-        Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
-        Route::resource('Teachers', TeacherController::class);
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Grades', GradeController::class);
+        });
 
-    });
+         //==============================Classrooms============================
+        // Route::resource('Grades', GradeController::class);
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Classrooms', ClassroomController::class);
+            Route::post('delete_all', [ClassroomController::class,'delete_all'])->name('delete_all');
+            Route::post('Filter_Classes', [ClassroomController::class,'Filter_Classes'])->name('Filter_Classes');
+        });
 
+
+         //==============================Sections============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Sections', SectionController::class);
+            Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
+        });
+
+           //==============================Teachers============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Teachers', TeacherController::class);
+        });
         //==============================parents============================
 
         Route::view('add_parent','livewire.show_Form');
+
+         //==============================Students============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Students', StudentController::class);
+            Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
+            Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+
         // Route::view('add_parent',[Livewire::class,'add_parent'])->name('show_Form');
 
 
-    //==============================Students============================
-    Route::group(['namespace' => 'App\Http\Controllers'], function () {
-        Route::resource('Students', StudentController::class);
-        Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
-        Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
-    });
+   
 
 // Route::group(
 //     [

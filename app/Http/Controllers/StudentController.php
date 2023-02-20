@@ -23,7 +23,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        // return view('pages.Students.index');
+        return $this->Student->Get_Student();
     }
 
     /**
@@ -66,7 +66,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->Student->Edit_Student($id);
     }
 
     /**
@@ -76,9 +76,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request)
     {
-        //
+        return $this->Student->Update_Student($request);
     }
 
     /**
@@ -87,9 +87,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->Student->Delete_Student($request);
     }
 
     public function Get_classrooms($id)

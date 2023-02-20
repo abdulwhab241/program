@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Repository;
-use App\Models\Classroom;
-use App\Models\Gender;
 use App\Models\Grade;
-use App\Models\My_Parent;
+use App\Models\Image;
+use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Classroom;
+use App\Models\My_Parent;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -37,9 +39,11 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Store_Student($request){
 
+        DB::beginTransaction();
+
         try {
             $students = new Student();
-            $students->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $students->name = $request->name;
             $students->email = $request->email;
             $students->password = Hash::make($request->password);
             $students->gender_id = $request->gender_id;
@@ -50,14 +54,79 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->parent_id = $request->parent_id;
             $students->academic_year = $request->academic_year;
             $students->save();
+
+              // insert img
+            if($request->hasfile('photos'))
+            {
+                foreach($request->file('photos') as $file)
+                {
+                    $name = $file->getClientOriginalName();
+                    $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(),'upload_attachments');
+
+                    // insert in image_table
+                    $images= new Image();
+                    $images->filename=$name;
+                    $images->imageable_id= $students->id;
+                    $images->imageable_type = 'App\Models\Student';
+                    $images->save();
+                }
+            }
+            DB::commit(); // insert data
             toastr()->success(trans('main_trans.success'));
-            return redirect()->route('Students.add');
+            return redirect()->route('Students.create');
         }
 
         catch (\Exception $e){
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
+    }
+
+    public function Get_Student()
+    {
+        $students = Student::all();
+        return view('pages.Students.index',compact('students'));
+    }
+
+    public function Edit_Student($id)
+    {
+        $data['Grades'] = Grade::all();
+        $data['parents'] = My_Parent::all();
+        $data['Genders'] = Gender::all();
+        $Students =  Student::findOrFail($id);
+        return view('pages.Students.edit',$data,compact('Students'));
+    }
+
+    public function Update_Student($request)
+    {
+        try {
+            $Edit_Students = Student::findOrFail($request->id);
+            $Edit_Students->name = $request->name;
+            $Edit_Students->email = $request->email;
+            $Edit_Students->password = Hash::make($request->password);
+            $Edit_Students->gender_id = $request->gender_id;
+            $Edit_Students->Date_Birth = $request->Date_Birth;
+            $Edit_Students->Grade_id = $request->Grade_id;
+            $Edit_Students->Classroom_id = $request->Classroom_id;
+            $Edit_Students->section_id = $request->section_id;
+            $Edit_Students->parent_id = $request->parent_id;
+            $Edit_Students->academic_year = $request->academic_year;
+            $Edit_Students->save();
+            toastr()->success(trans('main_trans.update'));
+            return redirect()->route('Students.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+
+    public function Delete_Student($request)
+    {
+
+        Student::destroy($request->id);
+        toastr()->error(trans('main_trans.delete'));
+        return redirect()->route('Students.index');
     }
 
 
