@@ -173,7 +173,7 @@
 @section('js')
     @toastr_js
     @toastr_render
-    <script>
+    {{-- <script>
         $(document).ready(function () {
             $('select[name="Grade_id"]').on('change', function () {
                 var Grade_id = $(this).val();
@@ -221,5 +221,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

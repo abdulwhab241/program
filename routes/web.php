@@ -67,6 +67,14 @@ Route::group(
             Route::resource('Students', StudentController::class);
             Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
             Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
+            Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
+            Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
+            Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
+    });
+
+     //==============================Promotion Students ============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Promotion', 'PromotionController');
     });
 
 

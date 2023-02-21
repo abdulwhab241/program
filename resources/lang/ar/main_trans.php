@@ -56,6 +56,7 @@ return [
     'Add_Parent'=>'اضافة ولي امر',
     'add_student'=>'اضافة طالب جديد',
     'list_students'=>'قائمة الطلاب',
+    'Students_Promotions'=>'ترقية الطلاب',
     // 'Accounts'=>'الحسابات',
     // 'Attendance'=>'الحضور والغياب',
     // 'Exams'=>'الامتحانات',

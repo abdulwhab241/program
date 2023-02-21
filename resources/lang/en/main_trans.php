@@ -48,6 +48,7 @@ return [
 
     'students'=>'Students',
     'Add_student'=>'Add Student',
+    'Students_Promotions'=>'Students Promotions',
     'information_student'=>'Information Students',
     'Students_upgrade'=>'Students Upgrade',
     'Graduate_students'=>'Graduate Students',

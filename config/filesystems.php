@@ -36,6 +36,14 @@ return [
             'throw' => false,
         ],
 
+        'upload_attachments' => [
+            'driver' => 'local',
+            'root' => public_path('/'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -44,12 +52,6 @@ return [
             'throw' => false,
         ],
 
-        'upload_attachments' => [
-            'driver' => 'local',
-            'root' => public_path('/'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-        ],
 
         's3' => [
             'driver' => 's3',

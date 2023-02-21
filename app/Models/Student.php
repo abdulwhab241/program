@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\Gender;
+use App\Models\My_Parent;
 use App\Models\Section;
 use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Model;
@@ -50,5 +51,13 @@ class Student extends Model
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+
+     // علاقة بين الطلاب والاباء لجلب اسم الاب في جدول الاباء
+
+    public function myparent()
+    {
+        return $this->belongsTo(My_Parent::class, 'parent_id');
     }
 }
