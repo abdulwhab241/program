@@ -5,10 +5,11 @@ namespace App\Repository;
 
 
 use App\Models\Grade;
-use App\Models\promotion;
 use App\Models\Student;
-use Illuminate\Database\Eloquent\Model;
+// use App\Models\promotion;
+use App\Models\Promotion;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 {
@@ -27,7 +28,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
     public function store($request)
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
 
@@ -63,19 +64,19 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 ]);
 
             }
-            DB::commit();
+            // DB::commit();
             toastr()->success(trans('messages.success'));
             return redirect()->back();
 
         } catch (\Exception $e) {
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
         public function destroy($request)
         {
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         try {
 
@@ -99,19 +100,35 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     Promotion::truncate();
 
                 }
-                DB::commit();
-                toastr()->error(trans('messages.Delete'));
+                // DB::commit();
+                toastr()->error(trans('main_trans.Delete'));
                 return redirect()->back();
+            }
+            else
+            {
+                $Promotion = Promotion::findOrFail($request->id);
+                student::where('id', $request->student_id)
+                ->update([
+                'Grade_id'=>$Promotion->from_grade,
+                'Classroom_id'=>$Promotion->from_Classroom,
+                'section_id'=> $Promotion->from_section,
+                'academic_year'=>$Promotion->academic_year,
+            ]);
 
+            Promotion::destroy($request->id);
+            // DB::commit();
+            toastr()->error(trans('main_trans.Delete'));
+            return redirect()->back();
 
             }
 
         }
 
         catch (\Exception $e) {
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
         }
-
     }
+
+    

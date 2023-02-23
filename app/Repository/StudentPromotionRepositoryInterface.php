@@ -14,4 +14,5 @@ interface StudentPromotionRepositoryInterface
 
     public function destroy($request);
 
+
 }

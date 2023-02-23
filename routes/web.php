@@ -8,7 +8,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\FeeController;
+use App\Http\Controllers\FeeInvoiceController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\GraduatedController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -65,17 +69,21 @@ Route::group(
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
+            Route::resource('Graduated', GraduatedController::class);
+            Route::resource('Promotion',  PromotionController::class);
+            Route::resource('Fees_Invoices', FeeInvoiceController::class);
+            Route::resource('Fees',  FeeController::class);
             Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
             Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
-            Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
-            Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
-            Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
+            Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
+            Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
+            Route::post('Delete_attachment', [StudentController::class,'Delete_attachment'])->name('Delete_attachment');
     });
 
-     //==============================Promotion Students ============================
-        Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Promotion', 'PromotionController');
-    });
+    //  //==============================Promotion Students ============================
+    //     Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    //         Route::resource('Promotion', 'PromotionController');
+    // });
 
 
 

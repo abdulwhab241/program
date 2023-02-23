@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('main_trans.list_students')}}
+    {{trans('main_trans.list_Promotions')}}
 @stop
 @endsection
 @section('page-header')
@@ -10,19 +10,19 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0"> {{ trans('main_trans.list_students') }}</h4>
+            <h4 class="mb-0"> {{ trans('main_trans.list_Promotions') }}</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('main_trans.list_students') }}</li>
+                <li class="breadcrumb-item active">{{ trans('main_trans.list_Promotions') }}</li>
             </ol>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('main_trans.list_students')}}
+    {{trans('main_trans.list_Promotions')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -75,20 +75,24 @@
                 <td>{{$promotion->t_classroom->Name_Class}}</td>
                 <td>{{$promotion->t_section->Name_Section}}</td>
                 <td>
-                    <a href="{{route('Students.edit',$promotion->id)}}"
+                    {{-- <a href="{{route('Students.edit',$promotion->id)}}"
                         class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
-                            class="fa fa-edit"></i></a>
-                    <button type="button" class="btn btn-danger btn-sm"
+                            class="fa fa-edit"></i></a> --}}
+                    <button type="button" class="btn btn-outline-danger btn-sm"
                             data-toggle="modal"
-                            data-target="#Delete_Student{{ $promotion->id }}"
-                            title="{{ trans('Grades_trans.Delete') }}"><i
-                            class="fa fa-trash"></i></button>
-                    <a href="{{route('Students.show',$promotion->id)}}"
+                            data-target="#Delete_one{{ $promotion->id }}"
+                            >إرجاع الطالب</button>
+                            <button type="button" class="btn btn-outline-success btn-sm"
+                            data-toggle="modal"
+                            data-target="#"
+                            >تخرج الطالب</button>
+                    {{-- <a href="{{route('Students.show',$promotion->id)}}"
                         class="btn btn-warning btn-sm" role="button" aria-pressed="true"><i
-                            class="far fa-eye"></i></a>
+                            class="far fa-eye"></i></a> --}}
                 </td>
             </tr>
-    @include('pages.Students.promotion.Delete_all')
+        @include('pages.Students.promotion.Delete_all')
+        @include('pages.Students.promotion.Delete_one')
         @endforeach
     </table>
 </div>

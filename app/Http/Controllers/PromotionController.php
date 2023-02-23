@@ -91,4 +91,5 @@ class PromotionController extends Controller
         return $this->Promotion->destroy($request);
 
     }
+    
 }

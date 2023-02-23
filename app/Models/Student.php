@@ -5,14 +5,17 @@ namespace App\Models;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\Gender;
-use App\Models\My_Parent;
 use App\Models\Section;
 use App\Models\Classroom;
+use App\Models\My_Parent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
 {
+    use SoftDeletes;
+    
     use HasFactory;
     protected $genders = [];
 
