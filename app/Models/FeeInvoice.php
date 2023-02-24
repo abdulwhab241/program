@@ -10,10 +10,11 @@ use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Fee_Invoice extends Model
+class FeeInvoice extends Model
 {
     use HasFactory;
 
+    
     public function grade()
     {
         return $this->belongsTo(Grade::class, 'Grade_id');
