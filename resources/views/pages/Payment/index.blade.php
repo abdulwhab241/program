@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-    سندات القبض
+    سندات الصرف
 @stop
 @endsection
 @section('page-header')
@@ -10,19 +10,19 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">  سندات القبض</h4>
+            <h4 class="mb-0">   سندات الصرف</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active"> سندات القبض</li>
+                <li class="breadcrumb-item active">  سندات الصرف</li>
             </ol>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @section('PageTitle')
-   سندات القبض
+   سندات الصرف
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -49,18 +49,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($receipt_students as $receipt_student)
+                    @foreach($payment_students as $payment_student)
                         <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{$receipt_student->student->name}}</td>
-                        <td>{{ number_format($receipt_student->Debit, 2) }}</td>
-                        <td>{{$receipt_student->description}}</td>
+                        <td>{{$payment_student->student->name}}</td>
+                        <td>{{ number_format($payment_student->amount, 2) }}</td>
+                        <td>{{$payment_student->description}}</td>
                             <td>
-                                <a href="{{route('receipt_students.edit',$receipt_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$receipt_student->id}}" ><i class="fa fa-trash"></i></button>
+                                <a href="{{route('Payment_students.edit',$payment_student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$payment_student->id}}" ><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
-                    @include('pages.Receipt.Delete')
+                    @include('pages.Payment.Delete')
                     @endforeach
                 </table>
             </div>

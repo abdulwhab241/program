@@ -8,6 +8,8 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\My_Parent;
+use App\Models\Attendance;
+use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -63,4 +65,19 @@ class Student extends Model
     {
         return $this->belongsTo(My_Parent::class, 'parent_id');
     }
+
+    // علاقة بين جدول سدادت الطلاب وجدول الطلاب لجلب اجمالي المدفوعات والمتبقي
+    public function student_account()
+    {
+        return $this->hasMany(StudentAccount::class, 'student_id');
+    }
+
+          // علاقة بين جدول الطلاب وجدول الحضور والغياب
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'student_id');
+    }
+
+
+
 }

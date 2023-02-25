@@ -74,12 +74,25 @@ Route::group(
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
             Route::resource('Fees',  FeeController::class);
             Route::resource('receipt_students', 'ReceiptStudentsController');
+            Route::resource('ProcessingFee', 'ProcessingFeeController');
+            Route::resource('Payment_students', 'PaymentController');
+            Route::resource('Attendance', 'AttendanceController');
             Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
             Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
             Route::post('Delete_attachment', [StudentController::class,'Delete_attachment'])->name('Delete_attachment');
     });
+
+        //==============================Subjects============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Subjects', 'SubjectController');
+        });
+
+            //==============================Exams============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Exams', 'ExamController');
+        });
 
     //  //==============================Promotion Students ============================
     //     Route::group(['namespace' => 'App\Http\Controllers'], function () {
