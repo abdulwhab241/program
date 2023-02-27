@@ -41,7 +41,7 @@ return [
     'Parents'=>'اولياء الامور',
     'Accounts'=>'الحسابات',
     'Attendance'=>'الحضور والغياب',
-    'Exams'=>'الامتحانات',
+    'Exams'=>'الإختبارات',
     'library'=>'المكتبة',
     'Onlineclasses'=>'حصص اونلاين',
     'Settings'=>'الاعدادات',

@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-    قائمة الامتحانات
+    قائمة الاختبارات
 @stop
 @endsection
 @section('page-header')
@@ -10,19 +10,19 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">قائمة الامتحانات</h4>
+            <h4 class="mb-0">قائمة الاختبارات</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">قائمة الامتحانات</li>
+                <li class="breadcrumb-item active">قائمة الاختبارات</li>
             </ol>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @section('PageTitle')
-    قائمة الامتحانات
+    قائمة الاختبارات
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -36,7 +36,7 @@
     <div class="card card-statistics h-100">
         <div class="card-body">
             <a href="{{route('Exams.create')}}" class="btn btn-outline-success btn-sm" role="button" style="margin: 5px; padding: 5px;"
-                aria-pressed="true">اضافة امتحان جديد</a><br><br>
+                aria-pressed="true">اضافة اختبار  جديد</a><br><br>
             <div class="table-responsive">
                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                         data-page-length="50"
@@ -44,8 +44,11 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>اسم الامتحان</th>
-                        <th>الترم</th>
+                        <th>اسم الاختبار</th>
+                        <th>اسم المعلم</th>
+                        <th>المرحلة الدراسية</th>
+                        <th>الصف الدراسي</th>
+                        <th>القسم</th>
                         <th>العمليات</th>
                     </tr>
                     </thead>
@@ -54,7 +57,10 @@
                         <tr>
                             <td>{{ $loop->iteration}}</td>
                             <td>{{$exam->name}}</td>
-                            <td>{{$exam->term}}</td>
+                            <td>{{$exam->teacher->Name}}</td>
+                            <td>{{$exam->grade->Name}}</td>
+                            <td>{{$exam->classroom->Name_Class}}</td>
+                            <td>{{$exam->section->Name_Section}}</td>
                             <td>
                                 <a href="{{route('Exams.edit',$exam->id)}}"
                                     class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
@@ -75,7 +81,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;"
-                                                class="modal-title" id="exampleModalLabel">حذف امتحان</h5>
+                                                class="modal-title" id="exampleModalLabel">حذف اختبار </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>

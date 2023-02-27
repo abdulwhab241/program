@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('term');
-            $table->string('academic_year');
+            $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->foreignId('grade_id')->references('id')->on('Grades')->onDelete('cascade');
+            $table->foreignId('classroom_id')->references('id')->on('Classrooms')->onDelete('cascade');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreignId('teacher_id')->references('id')->on('Classrooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

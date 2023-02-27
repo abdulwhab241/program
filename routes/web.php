@@ -2,17 +2,25 @@
 
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeeController;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\ClassroomController;
-use App\Http\Controllers\FeeController;
-use App\Http\Controllers\FeeInvoiceController;
-use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\FeeInvoiceController;
+use App\Http\Controllers\ProcessingFeeController;
+use App\Http\Controllers\ReceiptStudentsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -73,10 +81,10 @@ Route::group(
             Route::resource('Promotion',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
             Route::resource('Fees',  FeeController::class);
-            Route::resource('receipt_students', 'ReceiptStudentsController');
-            Route::resource('ProcessingFee', 'ProcessingFeeController');
-            Route::resource('Payment_students', 'PaymentController');
-            Route::resource('Attendance', 'AttendanceController');
+            Route::resource('receipt_students', ReceiptStudentsController::class);
+            Route::resource('ProcessingFee', ProcessingFeeController::class);
+            Route::resource('Payment_students', PaymentController::class);
+            Route::resource('Attendance', AttendanceController::class);
             Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
             Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
@@ -86,13 +94,21 @@ Route::group(
 
         //==============================Subjects============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Subjects', 'SubjectController');
+            Route::resource('Subjects', SubjectController::class);
         });
 
             //==============================Exams============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Exams', 'ExamController');
+            Route::resource('Exams', ExamController::class);
         });
+
+          //==============================questions============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Questions', QuestionController::class);
+        });
+
+          //==============================Setting============================
+        Route::resource('Settings', SettingController::class);
 
     //  //==============================Promotion Students ============================
     //     Route::group(['namespace' => 'App\Http\Controllers'], function () {
