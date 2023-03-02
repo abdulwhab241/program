@@ -9,13 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if(isset(Auth::user()->name))
-        {
-            return view('dashboard');
-        }
-        else
-        {
-            return redirect()->back();
-        }
+        return view('auth.selection');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
     }
 }

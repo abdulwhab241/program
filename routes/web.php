@@ -34,8 +34,18 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+Route::get('/', 'HomeController@index')->name('selection');
+
+Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
+
+    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+    
+    Route::post('/login','LoginController@login')->name('login');
+    
+    
 });
 
 Route::group(
