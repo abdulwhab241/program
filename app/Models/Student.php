@@ -11,14 +11,14 @@ use App\Models\My_Parent;
 use App\Models\Attendance;
 use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Student extends Model
+class Student extends Authenticatable
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
     
-    use HasFactory;
     protected $genders = [];
 
     

@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('auth.selection');
+        return view('selection');
     }
 
     public function dashboard()

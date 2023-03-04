@@ -29,8 +29,8 @@ class TeacherRepository implements TeacherRepositoryInterFace
         try {
             $Teachers = new Teacher();
     
-            $Teachers->Email = $request->Email;
-            $Teachers->Password = Hash::make($request->Password);
+            $Teachers->email = $request->Email;
+            $Teachers->password =  Hash::make($request->Password);
             $Teachers->Name = $request->Name;
             $Teachers->Specialization_id = $request->Specialization_id;
             $Teachers->Gender_id = $request->Gender_id;
@@ -53,8 +53,8 @@ class TeacherRepository implements TeacherRepositoryInterFace
             $Teachers = Teacher::findOrFail($request->id);
     
             $Teachers->Email = $request->Email;
-            $Teachers->Password = Hash::make($request->Password);
-            $Teachers->Name = $request->Name;
+            $Teachers->email = $request->Email;
+            $Teachers->password =  Hash::make($request->Password);
             $Teachers->Specialization_id = $request->Specialization_id;
             $Teachers->Gender_id = $request->Gender_id;
             $Teachers->Joining_Date = $request->Joining_Date;

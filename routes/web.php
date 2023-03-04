@@ -6,6 +6,7 @@ use App\Http\Controllers\FeeController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
@@ -35,16 +36,17 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 // Route::get('/', function () {
-//     return view('auth.login');
+//     return view('auth.selection');
 // });
 Route::get('/', 'HomeController@index')->name('selection');
 
-Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
-    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+    Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
     
-    Route::post('/login','LoginController@login')->name('login');
-    
+    Route::post('/login',[LoginController::class,'login'])->name('login');
+
+    Route::get('/logout/{type}', [LoginController::class,'logout'])->name('logout');
     
 });
 
@@ -55,7 +57,7 @@ Route::group(
     ], function(){ 
         
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-        Route::get('/', [HomeController::class, 'index']) -> name('dashboard');
+        Route::get('/', [HomeController::class, 'dashboard']) -> name('dashboard');
 
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
@@ -82,7 +84,7 @@ Route::group(
         });
         //==============================parents============================
 
-        Route::view('add_parent','livewire.show_Form');
+        Route::view('add_parent','livewire.show_Form')->name('add_parent');
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
@@ -164,10 +166,10 @@ Route::group(
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

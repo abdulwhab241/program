@@ -6,9 +6,10 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Specialization;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasFactory;
 

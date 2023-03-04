@@ -2,7 +2,7 @@
     <div class="row">
         <!-- Left Sidebar start-->
         <div class="side-menu-fixed">
-            <div class="scrollbar side-menu-bg" style="overflow: scroll">
+            {{-- <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
@@ -185,8 +185,21 @@
                     <!-- Settings-->
                     <li>
                         <a href="{{route('Settings.index')}}"><i class="fas fa-cogs"></i><span class="right-nav-text">{{trans('main_trans.Settings')}} </span></a>
-                    </li>
-                    <!-- Users-->
+                    </li> --}}
+
+                @if (auth('web')->check())
+                @include('layouts.main-sidebar.admin-main-sidebar')
+                @endif
+    
+                @if (auth('student')->check())
+                @include('layouts.main-sidebar.student-main-sidebar')
+                @endif
+    
+                @if (auth('teacher')->check())
+                @include('layouts.main-sidebar.teacher-main-sidebar')
+                @endif
+
+                    {{-- <!-- Users-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Users-icon">
                             <div class="pull-left"><i class="fas fa-users"></i><span class="right-nav-text">{{trans('main_trans.Users')}}</span></div>
@@ -198,9 +211,14 @@
                             <li> <a href="themify-icons.html">Themify icons</a> </li>
                             <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
+                    </li> --}}
+
+                    @if (auth('parent')->check())
+                    @include('layouts.main-sidebar.parent-main-sidebar')
+                    @endif
+
+                {{-- </ul>
+            </div> --}}
         </div>
         <!-- Left Sidebar End-->
         <!--=================================
