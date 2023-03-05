@@ -68,7 +68,7 @@ class AuthenticatedSessionController extends Controller
             }
     }
 
-    public function logout(Request $request,$type)
+    public function destroy(Request $request,$type): RedirectResponse
     {
         Auth::guard($type)->logout();
 

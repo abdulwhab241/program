@@ -33,7 +33,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="classes-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{route('Classrooms.index')}}">{{trans('main_trans.List_classes')}}</a></li>
+                <li><a href="{{route('Classrooms.index')}}">{{trans('My_Classes_trans.List_classes')}}</a></li>
             </ul>
         </li>
 
@@ -47,7 +47,7 @@
                 <div class="clearfix"></div>
             </a>
             <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
-                <li><a href="{{route('Sections.index')}}">{{trans('main_trans.List_sections')}}</a></li>
+                <li><a href="{{route('Sections.index')}}">{{trans('Sections_trans.List_Section')}}</a></li>
             </ul>
         </li>
 
