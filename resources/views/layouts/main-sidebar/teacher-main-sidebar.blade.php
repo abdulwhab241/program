@@ -26,10 +26,18 @@
         </li>
 
 
-        <!-- الامتحانات-->
+        <!-- الاختبارات-->
         <li>
-            <a href="{{route('Settings.index')}}"><i class="fas fa-book-open"></i><span
-                    class="right-nav-text">الامتحانات</span></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
+            <div class="pull-left"><i class="fas fa-chalkboard"></i><span
+                    class="right-nav-text">الاختبارات</span></div>
+            <div class="pull-right"><i class="ti-plus"></i></div>
+            <div class="clearfix"></div>
+        </a>
+        <ul id="sections-menu" class="collapse" data-parent="#sidebarnav">
+            <li><a href="{{route('Exams.index')}}">قائمة الاختبارات</a></li>
+            <li><a href="#">قائمة الاسئلة</a></li>
+        </ul>
         </li>
 
         <!-- sections-->
@@ -49,7 +57,7 @@
 
         <!-- الملف الشخصي-->
         <li>
-            <a href="{{route('Settings.index')}}"><i class="fas fa-id-card-alt"></i><span
+            <a href="{{route('profile.show')}}"><i class="fas fa-id-card-alt"></i><span
                     class="right-nav-text">الملف الشخصي</span></a>
         </li>
 

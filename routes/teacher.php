@@ -4,6 +4,7 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,12 @@ Route::group(
         Route::get('attendance_report','TeacherStudentController@attendanceReport')->name('attendance.report');
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 
+        Route::resource('Exams', 'TeacherExamController');
+        
+        Route::resource('Questions', 'TeacherQuestionController');
+
+        Route::get('profile', 'TeacherProfileController@index')->name('profile.show');
+        Route::post('profile/{id}', 'TeacherProfileController@update')->name('profile.update');
     });
 
 });

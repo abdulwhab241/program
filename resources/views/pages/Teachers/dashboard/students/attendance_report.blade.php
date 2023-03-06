@@ -25,7 +25,7 @@
     تقارير الحضور والغياب
 @stop
 <!-- breadcrumb -->
-
+@endsection
 @section('content')
 <!-- row -->
 <div class="row">
@@ -63,12 +63,13 @@
                 <div class="input-group" data-date-format="yyyy-mm-dd">
                     <input type="text"  class="form-control range-from date-picker-default" placeholder="تاريخ البداية" required name="from">
                     <span class="input-group-addon">الي تاريخ</span>
-                    <input class="form-control range-to date-picker-default" placeholder="تاريخ النهاية" type="text" required name="to">
+                    <input class="form-control range-to date-picker-default"  placeholder="تاريخ النهاية" type="text" required name="to">
                 </div>
             </div>
 
         </div>
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Students_trans.submit')}}</button>
+        <button class="btn btn-outline-success btn-sm nextBtn btn-lg pull-rigth" 
+        style="margin: 5px; padding: 5px;" type="submit">{{trans('Students_trans.submit')}}</button>
     </form>
     @isset($Students)
     <div class="table-responsive">
